@@ -1,0 +1,114 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<script type="text/javascript" src="~/Guacamole/ArrayBufferReader.js"></script>
+<script type="text/javascript" src="~/Guacamole/ArrayBufferWriter.js"></script>
+<script type="text/javascript" src="~/Guacamole/AudioContextFactory.js"></script>
+<script type="text/javascript" src="~/Guacamole/AudioPlayer.js"></script>
+<script type="text/javascript" src="~/Guacamole/AudioRecorder.js"></script>
+<script type="text/javascript" src="~/Guacamole/BlobReader.js"></script>
+<script type="text/javascript" src="~/Guacamole/BlobWriter.js"></script>
+<script type="text/javascript" src="~/Guacamole/Client.js"></script>
+<script type="text/javascript" src="~/Guacamole/DataURIReader.js"></script>
+<script type="text/javascript" src="~/Guacamole/Display.js"></script>
+<script type="text/javascript" src="~/Guacamole/InputSink.js"></script>
+<script type="text/javascript" src="~/Guacamole/InputStream.js"></script>
+<script type="text/javascript" src="~/Guacamole/IntegerPool.js"></script>
+<script type="text/javascript" src="~/Guacamole/JSONReader.js"></script>
+<script type="text/javascript" src="~/Guacamole/Keyboard.js"></script>
+<script type="text/javascript" src="~/Guacamole/Layer.js"></script>
+<script type="text/javascript" src="~/Guacamole/Mouse.js"></script>
+<script type="text/javascript" src="~/Guacamole/Namespace.js"></script>
+<script type="text/javascript" src="~/Guacamole/Object.js"></script>
+<script type="text/javascript" src="~/Guacamole/OnScreenKeyboard.js"></script>
+<script type="text/javascript" src="~/Guacamole/OutputStream.js"></script>
+<script type="text/javascript" src="~/Guacamole/Parser.js"></script>
+<script type="text/javascript" src="~/Guacamole/RawAudioFormat.js"></script>
+<script type="text/javascript" src="~/Guacamole/SessionRecording.js"></script>
+<script type="text/javascript" src="~/Guacamole/Status.js"></script>
+<script type="text/javascript" src="~/Guacamole/StringReader.js"></script>
+<script type="text/javascript" src="~/Guacamole/StringWriter.js"></script>
+<script type="text/javascript" src="~/Guacamole/Tunnel.js"></script>
+<script type="text/javascript" src="~/Guacamole/Version.js"></script>
+<script type="text/javascript" src="~/Guacamole/VideoPlayer.js"></script>
+@*<div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>*@
+
+<button onclick="myFunction()">connect</button>
+<div id="display"></div>
+<script>
+    function myFunction() {
+        debugger;
+        var display = document.getElementById("display");
+
+        var url = "https://192.168.1.169:8443/guacamole/#/client?GUAC_ID=1040168671&token=B9C9BEB4435650253CAD489941D11647873BC498A3A8AB9C98057B04211ED898&GUAC_TYPE=c&GUAC_DATA_SOURCE=jwt";
+
+        // Instantiate client, using an HTTP tunnel for communications.
+        var urls = url.split('?');
+        var tunnel = new Guacamole.HTTPTunnel(urls[0], false)
+        var guac = new Guacamole.Client(tunnel);
+        //var guac = new Guacamole.Client(new Guacamole.WebSocketTunnel("wss://192.168.1.169:8443/guacamole/websocket-tunnel"));
+
+        // Add client to display div
+        display.appendChild(guac.getDisplay().getElement());
+
+        // Error handler
+        guac.onerror = function (error) {
+            alert(error);
+        };
+
+        // Connect
+        //guac.connect('GUAC_ID=123&GUAC_TYPE=c&GUAC_DATA_SOURCE=hmac&token=4530D26714A0A3D88EE37FACDC59E362838BD509D0CD143792C06C9FA95EDFC2');
+        tunnel.connect(urls[1]);
+
+        // Disconnect on close
+        window.onunload = function () {
+            guac.disconnect();
+        };
+
+        // Mouse
+        var mouse = new Guacamole.Mouse(guac.getDisplay().getElement());
+
+        mouse.onmousedown =
+            mouse.onmouseup =
+            mouse.onmousemove = function (mouseState) {
+                guac.sendMouseState(mouseState);
+            };
+
+        // Keyboard
+        var keyboard = new Guacamole.Keyboard(document);
+
+        keyboard.onkeydown = function (keysym) {
+            guac.sendKeyEvent(1, keysym);
+        };
+
+        keyboard.onkeyup = function (keysym) {
+            guac.sendKeyEvent(0, keysym);
+        };
+
+
+        //var display = document.getElementById("display");
+
+        //// Instantiate client, using an HTTP tunnel for communications.
+        //var tunnel = new Guacamole.HTTPTunnel(url, true);
+        //// here
+        ////tunnel.setAttribute("protocol","ssh");
+        //var guac = new Guacamole.Client(tunnel);
+        //// Add client to display div
+        //display.appendChild(guac.getDisplay().getElement());
+        //// Error handler
+        //guac.onerror = function (error) {
+        //    alert(error);
+        //};
+        //// Connect
+        //guac.connect();
+        //// Disconnect on close
+        //window.onunload = function () {
+        //    guac.disconnect();
+        //};
+    }
+</script>
+
+

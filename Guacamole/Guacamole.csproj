@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="CloudAssert.Operations.Common">
+      <HintPath>F:\git\CloudAssert.WAP.VConnect\CloudAssert.WAP.VConnect\Api\ApiClient\bin\Debug\CloudAssert.Operations.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="CloudAssert.WAP.Common.VConnect">
+      <HintPath>F:\git\CloudAssert.WAP.VConnect\CloudAssert.WAP.VConnect\Api\ApiClient\bin\Debug\CloudAssert.WAP.Common.VConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="CloudAssert.WAP.PortalCommon.VConnect">
+      <HintPath>F:\git\CloudAssert.WAP.VConnect\CloudAssert.WAP.VConnect\Api\ApiClient\bin\Debug\CloudAssert.WAP.PortalCommon.VConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="CloudAssert.WAP.VConnect.ApiClient">
+      <HintPath>F:\git\CloudAssert.WAP.VConnect\CloudAssert.WAP.VConnect\Api\ApiClient\bin\Debug\CloudAssert.WAP.VConnect.ApiClient.dll</HintPath>
+    </Reference>
+    <Reference Include="CloudAssert.WAP.VConnect.DataContracts">
+      <HintPath>F:\git\CloudAssert.WAP.VConnect\CloudAssert.WAP.VConnect\Api\ApiClient\bin\Debug\CloudAssert.WAP.VConnect.DataContracts.dll</HintPath>
+    </Reference>
+    <Reference Include="CloudAssert.WAP.VConnect.Public.Contracts">
+      <HintPath>F:\git\CloudAssert.WAP.VConnect\CloudAssert.WAP.VConnect\Api\ApiClient\bin\Debug\CloudAssert.WAP.VConnect.Public.Contracts.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Guacamole\ArrayBufferReader.js" />
+    <None Include="wwwroot\Guacamole\ArrayBufferWriter.js" />
+    <None Include="wwwroot\Guacamole\AudioContextFactory.js" />
+    <None Include="wwwroot\Guacamole\AudioPlayer.js" />
+    <None Include="wwwroot\Guacamole\AudioRecorder.js" />
+    <None Include="wwwroot\Guacamole\BlobReader.js" />
+    <None Include="wwwroot\Guacamole\BlobWriter.js" />
+    <None Include="wwwroot\Guacamole\Client.js" />
+    <None Include="wwwroot\Guacamole\DataURIReader.js" />
+    <None Include="wwwroot\Guacamole\Display.js" />
+    <None Include="wwwroot\Guacamole\InputSink.js" />
+    <None Include="wwwroot\Guacamole\InputStream.js" />
+    <None Include="wwwroot\Guacamole\IntegerPool.js" />
+    <None Include="wwwroot\Guacamole\JSONReader.js" />
+    <None Include="wwwroot\Guacamole\Keyboard.js" />
+    <None Include="wwwroot\Guacamole\Layer.js" />
+    <None Include="wwwroot\Guacamole\Mouse.js" />
+    <None Include="wwwroot\Guacamole\Namespace.js" />
+    <None Include="wwwroot\Guacamole\Object.js" />
+    <None Include="wwwroot\Guacamole\OnScreenKeyboard.js" />
+    <None Include="wwwroot\Guacamole\OutputStream.js" />
+    <None Include="wwwroot\Guacamole\Parser.js" />
+    <None Include="wwwroot\Guacamole\RawAudioFormat.js" />
+    <None Include="wwwroot\Guacamole\SessionRecording.js" />
+    <None Include="wwwroot\Guacamole\Status.js" />
+    <None Include="wwwroot\Guacamole\StringReader.js" />
+    <None Include="wwwroot\Guacamole\StringWriter.js" />
+    <None Include="wwwroot\Guacamole\Tunnel.js" />
+    <None Include="wwwroot\Guacamole\Version.js" />
+    <None Include="wwwroot\Guacamole\VideoPlayer.js" />
+  </ItemGroup>
+
+
+
+</Project>
